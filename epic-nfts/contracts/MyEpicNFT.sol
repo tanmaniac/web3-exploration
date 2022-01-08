@@ -19,6 +19,8 @@ contract MyEpicNFT is ERC721URIStorage {
     string[] secondWords = ["Whisper", "Identify", "Measure", "Cure", "Place", "Guard", "Yell", "Pack", "Time", "Share", "Bare", "Remind", "Knot", "Whirl", "Surround", "Phone", "Reduce", "Knock", "Memorize", "Provide"];
     string[] thirdWords = ["Sofa", "Color", "Partner", "Bells", "Face", "Zipper", "Battle", "Cemetary", "Cabbage", "Tin", "Giraffe", "Belief", "Bomb", "Cap", "Songs", "Mom", "Floor", "Finger", "Respect", "Beginner"];
 
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
+
     constructor() ERC721 ("SquareNFT", "SQUARE") {
         console.log("Constructing the NFT contract");
     }
@@ -87,5 +89,7 @@ contract MyEpicNFT is ERC721URIStorage {
 
         // Increment the counter for when the next NFT is minted
         _tokenIds.increment();
+
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 }
